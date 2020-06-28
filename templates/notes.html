@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Notes</title>
+{% endblock %}
+
+{% block body %}
+<h1>Personal Notes App</h1>
+
+<hr>
+<form action="notes" method="POST">
+    <div>
+        <input type="text" name="title" placeholder="Add Title Here" maxlength="300">
+    </div>
+    
+    <div>
+        <textarea name="content" cols="50" rows="5" maxlength="5000" placeholder="Add Content Here"></textarea>
+    </div>
+
+    <button type="submit" value="POST">Add Note</button>
+</form>
+<hr>
+
+<!-- Notes -->
+<h2>Your Notes</h2>
+<hr>
+{% for note in notes %}
+        <h2>Title: {{ note.title }}</h2>
+        <p>Content: {{ note.content }}</p>
+
+        <a href="notes/update/{{ note.id }}">Update</a>
+        <a href="notes/delete/{{ note.id }}">Delete</a>
+    <hr>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Edit your Note</h1>
+<a href="../../notes">Go back!</a>
+<hr>
+<form action="/notes/update/{{ note.id }}" method="POST">
+    <div>
+        <input type="text" name="title" placeholder="Add Title Here" maxlength="300" value="{{ note.title }}"> 
+    </div>
+
+    <div>
+        <textarea name="content" cols="30" rows="5" maxlength="5000" placeholder="Add Content Here">{{ note.content }}</textarea>
+    </div>
+    
+    <button type="submit" value="POST">Add Note</button>
+</form>
+<hr>
+{% endblock %}
